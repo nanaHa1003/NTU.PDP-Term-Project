@@ -15,12 +15,26 @@ static const char DeviceType[] = "CudaDevice";
 
 class CudaDevice : public Device {
 public:
+    CudaDevice(int deviceID)
+    : Device(deviceID)
+    {
+        return;
+    }
+
     static const char *getDeviceType()
     {
         return DeviceType;
     }
     
-    void *malloc();
+    void *malloc(size_t size)
+    {
+        return nullptr;
+    }
+
+    void free(void *ptr)
+    {
+        return;
+    }
 };
 
 #endif

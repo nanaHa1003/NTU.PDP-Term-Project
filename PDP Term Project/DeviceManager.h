@@ -18,12 +18,12 @@
 
 class DeviceManager {
 private:
-    std::list<Device> devices;
+    std::list<Device *> devices;
 public:
     DeviceManager(int &argc, const char ** &argv)
     {
         // MPI_Init(&argc, &argv);
-        devices.push_back(*(new CudaDevice()));
+        devices.push_back(new CudaDevice(0));
         
         return;
     }

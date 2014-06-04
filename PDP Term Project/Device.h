@@ -21,7 +21,6 @@ public:
     }
     
     virtual void *malloc(size_t size) = 0;
-    virtual void *memcpy(void *dst, void *src, size_t num) = 0;
     virtual void free(void *ptr) = 0;
 };
 
