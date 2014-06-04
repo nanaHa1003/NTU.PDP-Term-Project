@@ -22,6 +22,7 @@ public:
     
     virtual void *malloc(size_t size) = 0;
     virtual void free(void *ptr) = 0;
+    virtual void sync() = 0;
 };
 
 #endif

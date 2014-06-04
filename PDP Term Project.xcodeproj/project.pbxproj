@@ -35,6 +35,8 @@
 		49296E29193F855300117184 /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
 		49296E2A193F85A800117184 /* Tasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tasks.h; sourceTree = "<group>"; };
 		49296E2B193F8E6500117184 /* CudaDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CudaDevice.h; sourceTree = "<group>"; };
+		494337BA193FCD0100EBC28B /* CudaDeviceFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CudaDeviceFactory.h; sourceTree = "<group>"; };
+		494337BB193FCD0E00EBC28B /* DeviceFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceFactory.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,8 @@
 				49296E29193F855300117184 /* Device.h */,
 				49296E2A193F85A800117184 /* Tasks.h */,
 				49296E2B193F8E6500117184 /* CudaDevice.h */,
+				494337BA193FCD0100EBC28B /* CudaDeviceFactory.h */,
+				494337BB193FCD0E00EBC28B /* DeviceFactory.h */,
 			);
 			path = "PDP Term Project";
 			sourceTree = "<group>";
@@ -220,6 +224,7 @@
 					/usr/local/include,
 					/usr/include,
 				);
+				ICC_DATA_CONST_CONSTRAINT = YES;
 				ICC_IGNORE_STD_INCLUDEDIR = NO;
 				ICC_LANG_OPENMP = disable;
 				ICC_LOGO = NO;
@@ -227,9 +232,14 @@
 				ICC_OTHER_CPLUSPLUSFLAGS = "$(ICC_OTHER_CFLAGS) $(OTHER_CPLUSPLUSFLAGS) -ipo";
 				ICC_OTHER_USE_CLANG_ENV = YES;
 				ICC_USE_OPTIMIZED_HEADERS = YES;
+				LD_RUNPATH_SEARCH_PATHS = "/Developer/NVIDIA/CUDA-6.0/lib /usr/local/lib";
+				OTHER_LDFLAGS = (
+					"-L/Developer/NVIDIA/CUDA-6.0/lib",
+					"-lcudart",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				USER_HEADER_SEARCH_PATHS = /usr/local/include;
+				USER_HEADER_SEARCH_PATHS = "/Developer/NVIDIA/CUDA-6.0/include";
 				VERSIONING_SYSTEM = "";
 			};
 			name = Debug;
@@ -246,6 +256,7 @@
 					/usr/local/include,
 					/usr/include,
 				);
+				ICC_DATA_CONST_CONSTRAINT = YES;
 				ICC_DEFINES = "$(GCC_PREPROCESSOR_DEFINITIONS) NDEBUG";
 				ICC_IGNORE_STD_INCLUDEDIR = NO;
 				ICC_LANG_OPENMP = disable;
@@ -254,9 +265,14 @@
 				ICC_OTHER_CPLUSPLUSFLAGS = "$(ICC_OTHER_CFLAGS) $(OTHER_CPLUSPLUSFLAGS) -ipo";
 				ICC_OTHER_USE_CLANG_ENV = YES;
 				ICC_USE_OPTIMIZED_HEADERS = YES;
+				LD_RUNPATH_SEARCH_PATHS = "/Developer/NVIDIA/CUDA-6.0/lib /usr/local/lib";
+				OTHER_LDFLAGS = (
+					"-L/Developer/NVIDIA/CUDA-6.0/lib",
+					"-lcudart",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				USER_HEADER_SEARCH_PATHS = /usr/local/include;
+				USER_HEADER_SEARCH_PATHS = "/Developer/NVIDIA/CUDA-6.0/include";
 				VERSIONING_SYSTEM = "";
 			};
 			name = Release;

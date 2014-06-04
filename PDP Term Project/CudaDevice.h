@@ -9,16 +9,19 @@
 #ifndef PDP_Term_Project_CudaDevice_h
 #define PDP_Term_Project_CudaDevice_h
 
+#include "cuda.h"
+#include "cuda_runtime.h"
 #include "Device.h"
 
 static const char DeviceType[] = "CudaDevice";
 
 class CudaDevice : public Device {
 public:
-    CudaDevice(int deviceID)
-    : Device(deviceID)
+    CudaDevice(int deviceID) : Device(deviceID)
     {
-        return;
+        // Create context for selected device
+        cudaSetDevice(this->deviceID);
+        cudaFree(nullptr);
     }
 
     static const char *getDeviceType()
@@ -28,12 +31,25 @@ public:
     
     void *malloc(size_t size)
     {
-        return nullptr;
+        char *tmp;
+        cudaError_t err = cudaMalloc(&tmp, size);
+        if(err != cudaSuccess)
+        {
+            cudaGetErrorString(err);
+            return nullptr;
+        }
+        
+        return tmp;
     }
 
     void free(void *ptr)
     {
         return;
+    }
+    
+    void sync()
+    {
+        cudaDeviceSynchronize();
     }
 };
 

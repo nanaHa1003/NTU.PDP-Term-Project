@@ -9,21 +9,28 @@
 #ifndef PDP_Term_Project_DeviceManager_h
 #define PDP_Term_Project_DeviceManager_h
 
-#include <list>
-#include <mpi.h>
+#include <iostream>
+#include <vector>
+#include <thread>
+// #include <mpi.h>
 
-#include "Device.h"
-#include "CudaDevice.h"
 #include "Tasks.h"
+#include "CudaDevice.h"
+#include "CudaDeviceFactory.h"
 
 class DeviceManager {
 private:
-    std::list<Device *> devices;
+    std::vector<Device *> devices;
 public:
     DeviceManager(int &argc, const char ** &argv)
     {
-        // MPI_Init(&argc, &argv);
-        devices.push_back(new CudaDevice(0));
+        // MPI::Init(argc, (char **&) argv);
+        
+        // Create devices
+        int numDevices;
+        cudaGetDeviceCount(&numDevices);
+        
+        
         
         return;
     }
