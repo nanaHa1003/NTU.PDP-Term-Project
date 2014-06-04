@@ -11,7 +11,10 @@
 
 class AbstractReader {
 public:
-    virtual void read(const char *filename) = 0;
+    virtual int * read(const char *filename)
+    {
+        return nullptr;
+    }
 };
 
 #endif
