@@ -13,6 +13,7 @@
 #include "DeviceFactory.h"
 
 class CudaDeviceFactory : public DeviceFactory {
+public:
     // Override
     Device * createDevice(int deviceId)
     {

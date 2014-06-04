@@ -9,6 +9,8 @@
 #ifndef PDP_Term_Project_CudaDevice_h
 #define PDP_Term_Project_CudaDevice_h
 
+#include <iostream>
+
 #include "cuda.h"
 #include "cuda_runtime.h"
 #include "Device.h"
@@ -24,31 +26,45 @@ public:
         cudaFree(nullptr);
     }
 
-    static const char *getDeviceType()
+    const char *getDeviceType()
     {
         return DeviceType;
     }
     
+    // Override
     void *malloc(size_t size)
     {
         char *tmp;
         cudaError_t err = cudaMalloc(&tmp, size);
         if(err != cudaSuccess)
         {
-            cudaGetErrorString(err);
+            std::cout << cudaGetErrorString(err) << std::endl;
             return nullptr;
         }
         
         return tmp;
     }
 
+    // Override
     void free(void *ptr)
     {
-        return;
+        cudaError_t err = cudaFree(ptr);
+        if(err != cudaSuccess)
+        {
+            std::cout << cudaGetErrorString(err) << std::endl;
+        }
     }
     
-    void sync()
+    // Override
+    void submit(Task *task)
     {
+        
+    }
+
+    // Override
+    void syncDevice()
+    {
+        cudaSetDevice(this->deviceID);
         cudaDeviceSynchronize();
     }
 };

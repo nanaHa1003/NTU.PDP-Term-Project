@@ -19,10 +19,14 @@ public:
     {
         this->deviceID = deviceID;
     }
-    
+
+    // Let this be static when extend this class
+    virtual const char * getDeviceType() = 0;
+
     virtual void *malloc(size_t size) = 0;
-    virtual void free(void *ptr) = 0;
-    virtual void sync() = 0;
+    virtual void free(void *ptr)      = 0;
+    virtual void submit(Task *task)   = 0;
+    virtual void syncDevice()         = 0;
 };
 
 #endif

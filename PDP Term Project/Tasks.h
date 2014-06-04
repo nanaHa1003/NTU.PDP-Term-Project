@@ -17,8 +17,10 @@ class Task {
 protected:
     TaskOptions options;
 public:
+    TaskResults results;
+
     Task(TaskOptions taskOptions);
-    TaskResults execute();
+    virtual void execute() = 0;
 };
 
 #endif

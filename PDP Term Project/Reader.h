@@ -11,6 +11,7 @@
 
 class Reader {
 public:
+
     virtual int read(const char *filename, int * &points)
     {
         return 0;

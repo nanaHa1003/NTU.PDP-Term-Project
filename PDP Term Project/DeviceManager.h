@@ -24,15 +24,27 @@ private:
 public:
     DeviceManager(int &argc, const char ** &argv)
     {
-        // MPI::Init(argc, (char **&) argv);
-        
-        // Create devices
+        // Create device contexts for each device
         int numDevices;
         cudaGetDeviceCount(&numDevices);
         
-        
+        CudaDeviceFactory cudaDeviceFactory;
+        for(int i = 0; i < numDevices; i++)
+        {
+            devices.push_back(cudaDeviceFactory.createDevice(i));
+        }
         
         return;
+    }
+
+    int getDeviceCount()
+    {
+        return devices.size();
+    }
+
+    const char * getDeviceType(int deviceId)
+    {
+        return devices[deviceId]->getDeviceType();
     }
 };
 
