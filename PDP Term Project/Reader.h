@@ -9,11 +9,11 @@
 #ifndef PDP_Term_Project_Reader_h
 #define PDP_Term_Project_Reader_h
 
-class AbstractReader {
+class Reader {
 public:
-    virtual int * read(const char *filename)
+    virtual int read(const char *filename, int * &points)
     {
-        return nullptr;
+        return 0;
     }
 };
 

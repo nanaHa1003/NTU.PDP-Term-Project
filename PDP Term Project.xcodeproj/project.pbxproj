@@ -30,6 +30,10 @@
 		49118BE9193F77AE00FC8F3D /* PDP_Term_Project.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = PDP_Term_Project.1; sourceTree = "<group>"; };
 		49118BF0193F77F200FC8F3D /* Reader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = Reader.h; sourceTree = "<group>"; };
 		49118BF1193F7B5800FC8F3D /* ListReader.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; path = ListReader.h; sourceTree = "<group>"; };
+		49296E27193F812300117184 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
+		49296E28193F83C900117184 /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
+		49296E29193F855300117184 /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
+		49296E2A193F85A800117184 /* Tasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tasks.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,10 @@
 				49118BE9193F77AE00FC8F3D /* PDP_Term_Project.1 */,
 				49118BF0193F77F200FC8F3D /* Reader.h */,
 				49118BF1193F7B5800FC8F3D /* ListReader.h */,
+				49296E27193F812300117184 /* Client.h */,
+				49296E28193F83C900117184 /* DeviceManager.h */,
+				49296E29193F855300117184 /* Device.h */,
+				49296E2A193F85A800117184 /* Tasks.h */,
 			);
 			path = "PDP Term Project";
 			sourceTree = "<group>";
@@ -231,6 +239,7 @@
 				49118BEF193F77AE00FC8F3D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

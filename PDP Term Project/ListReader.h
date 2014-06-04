@@ -15,11 +15,30 @@
 #include "Reader.h"
 
 class ListReader : public Reader {
-    
+
+public:
     // Overriding
-    void int * read(const char *filename)
+    int read(const char *filename, int * &points)
     {
+        std::ifstream file(filename);
+        if(!file.is_open())
+        {
+            points = nullptr;
+            return 0;
+        }
         
+        int size;
+        file >> size;
+        points = new int[size];
+        
+        for(int i = 0; i < size; i++)
+        {
+            file >> points[i];
+        }
+        
+        file.close();
+        
+        return size;
     }
 };
 

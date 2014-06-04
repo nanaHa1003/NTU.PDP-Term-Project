@@ -7,11 +7,11 @@
 //
 
 #include <iostream>
+#include "Client.h"
 
-int main(int argc, const char * argv[])
+int main(int argc, const char ** argv)
 {
-
-    // insert code here...
-    return 0;
+    Client client(argc, argv);
+    return client.exec();
 }
 
