@@ -40,7 +40,12 @@ public:
     {
         ListReader listReader;
         size = listReader.read(filename, points);
-        
+
+        for(int i = 0; i < size; i++)
+        {
+            std::cout << points[i] << std::endl;
+        }
+
         return 0;
     }
 };
