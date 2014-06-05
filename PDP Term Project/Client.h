@@ -52,8 +52,6 @@ public:
         int  deviceCount = deviceManager->getDeviceCount();
         Device * dev = deviceManager->getDevice(deviceCount - 1);
         
-        int *a = (int *) dev->malloc(sizeof(int) * 64);
-        
         return 0;
     }
 };

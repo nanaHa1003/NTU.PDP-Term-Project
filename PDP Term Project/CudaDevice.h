@@ -55,18 +55,6 @@ public:
         return tmp;
     }
     
-    void *hostMalloc(size_t size)
-    {
-        char *tmp;
-        cudaError_t err =cudaMallocHost(&tmp, size);
-        if(err != cudaSuccess)
-        {
-            std::cout << cudaGetErrorString(err) << std::endl;
-        }
-        
-        return tmp;
-    }
-    
     // Override
     void free(void *ptr)
     {
@@ -80,6 +68,11 @@ public:
     // Override
     void submit(Task *task)
     {
+        if(task != nullptr)
+        {
+            this->syncDevice();
+        }
+
         this->task  = task;
         cudaSetDevice(this->deviceID);
         localWorker = std::thread(runTask, task);
@@ -97,6 +90,37 @@ public:
         
         // Clean up
         task = nullptr;
+    }
+
+    // Helper functions
+    static void *hostMalloc(size_t size)
+    {
+        char *tmp;
+        cudaError_t err =cudaMallocHost(&tmp, size);
+        if(err != cudaSuccess)
+        {
+            std::cout << cudaGetErrorString(err) << std::endl;
+        }
+        
+        return tmp;
+    }
+    
+    static void memcpyToDevice(void *dst, void *src, size_t size)
+    {
+        cudaError_t err = cudaMemcpy(dst, src, size, cudaMemcpyHostToDevice);
+        if(err != cudaSuccess)
+        {
+            std::cout << cudaGetErrorString(err) << std::endl;
+        }
+    }
+
+    static void memcpyToHost(void *dst, void *src, size_t size)
+    {
+        cudaError_t err = cudaMemcpy(dst, src, size, cudaMemcpyDeviceToHost);
+        if(err != cudaSuccess)
+        {
+            std::cout << cudaGetErrorString(err) << std::endl;
+        }
     }
 };
 

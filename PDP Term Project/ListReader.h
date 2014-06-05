@@ -13,6 +13,7 @@
 #include <fstream>
 
 #include "Reader.h"
+#include "Point.h"
 
 class ListReader : public Reader {
 
