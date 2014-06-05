@@ -9,6 +9,9 @@
 #ifndef PDP_Term_Project_Client_h
 #define PDP_Term_Project_Client_h
 
+#include <iostream>
+#include <vector>
+
 #include "ListReader.h"
 #include "DeviceManager.h"
 #include "Tasks.h"
@@ -40,6 +43,11 @@ public:
     {
         ListReader listReader;
         size = listReader.read(filename, points);
+        
+        int  deviceCount = deviceManager->getDeviceCount();
+        Device * dev = deviceManager->getDevice(deviceCount - 1);
+        
+        int *a = (int *) dev->malloc(sizeof(int) * 64);
         
         return 0;
     }
