@@ -50,7 +50,11 @@ public:
         }
 
         int  deviceCount = deviceManager->getDeviceCount();
-        Device * dev = deviceManager->getDevice(deviceCount - 1);
+        std::cout << deviceCount << std::endl;
+        // if(deviceCount > 0)
+        // {
+        //     Device * dev = deviceManager->getDevice(deviceCount - 1);
+        // }
         
         return 0;
     }

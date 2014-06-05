@@ -19,7 +19,7 @@
 
 class DeviceManager {
 private:
-    std::vector<Device *>    devices;
+    std::vector<Device *> devices;
 public:
     DeviceManager(int &argc, const char ** &argv)
     {
@@ -27,18 +27,21 @@ public:
         int numDevices;
         cudaGetDeviceCount(&numDevices);
         
+        // devices.resize(4);
         CudaDeviceFactory cudaDeviceFactory;
         for(int i = 0; i < numDevices; i++)
         {
             devices.push_back(cudaDeviceFactory.createDevice(i));
         }
         
+        std::cout << devices.size() << std::endl;
+        
         return;
     }
     
-    int getDeviceCount()
+    const int getDeviceCount()
     {
-        return (int) devices.size();
+        return (const int) devices.size();
     }
 
     Device * & getDevice(int deviceId)
