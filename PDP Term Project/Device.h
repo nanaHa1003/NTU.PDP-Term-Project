@@ -20,7 +20,6 @@ public:
         this->deviceID = deviceID;
     }
 
-    // Let this be static when extend this class
     virtual const char * getDeviceType() = 0;
 
     virtual void *malloc(size_t size) = 0;

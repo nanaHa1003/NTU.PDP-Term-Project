@@ -12,7 +12,6 @@
 #include <iostream>
 #include <vector>
 #include <thread>
-// #include <mpi.h>
 
 #include "Tasks.h"
 #include "CudaDevice.h"
@@ -20,7 +19,7 @@
 
 class DeviceManager {
 private:
-    std::vector<Device *> devices;
+    std::vector<Device *>    devices;
 public:
     DeviceManager(int &argc, const char ** &argv)
     {
@@ -36,12 +35,17 @@ public:
         
         return;
     }
-
+    
     int getDeviceCount()
     {
-        return devices.size();
+        return (int) devices.size();
     }
 
+    Device * & getDevice(int deviceId)
+    {
+        return devices[deviceId];
+    }
+    
     const char * getDeviceType(int deviceId)
     {
         return devices[deviceId]->getDeviceType();

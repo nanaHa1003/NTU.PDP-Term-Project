@@ -33,7 +33,7 @@
 		49296E27193F812300117184 /* Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Client.h; sourceTree = "<group>"; };
 		49296E28193F83C900117184 /* DeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceManager.h; sourceTree = "<group>"; };
 		49296E29193F855300117184 /* Device.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Device.h; sourceTree = "<group>"; };
-		49296E2A193F85A800117184 /* Tasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tasks.h; sourceTree = "<group>"; };
+		49296E2A193F85A800117184 /* Tasks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tasks.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
 		49296E2B193F8E6500117184 /* CudaDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CudaDevice.h; sourceTree = "<group>"; };
 		494337BA193FCD0100EBC28B /* CudaDeviceFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CudaDeviceFactory.h; sourceTree = "<group>"; };
 		494337BB193FCD0E00EBC28B /* DeviceFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceFactory.h; sourceTree = "<group>"; };
@@ -221,10 +221,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/usr/local/include,
-					/usr/include,
 				);
-				ICC_DATA_CONST_CONSTRAINT = YES;
+				ICC_DATA_CONST_CONSTRAINT = NO;
 				ICC_IGNORE_STD_INCLUDEDIR = NO;
 				ICC_LANG_OPENMP = disable;
 				ICC_LOGO = NO;
@@ -253,10 +251,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					/usr/local/include,
-					/usr/include,
 				);
-				ICC_DATA_CONST_CONSTRAINT = YES;
+				ICC_DATA_CONST_CONSTRAINT = NO;
 				ICC_DEFINES = "$(GCC_PREPROCESSOR_DEFINITIONS) NDEBUG";
 				ICC_IGNORE_STD_INCLUDEDIR = NO;
 				ICC_LANG_OPENMP = disable;

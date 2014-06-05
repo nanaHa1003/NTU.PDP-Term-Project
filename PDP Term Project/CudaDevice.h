@@ -15,9 +15,19 @@
 #include "cuda_runtime.h"
 #include "Device.h"
 
-static const char DeviceType[] = "CudaDevice";
+static const char CudaDeviceType[] = "CudaDevice";
+static void runTask(Task *task)
+{
+    if(task != nullptr)
+    {
+        task->execute();
+    }
+}
 
 class CudaDevice : public Device {
+private:
+    Task *task;
+    std::thread localWorker;
 public:
     CudaDevice(int deviceID) : Device(deviceID)
     {
@@ -28,7 +38,7 @@ public:
 
     const char *getDeviceType()
     {
-        return DeviceType;
+        return CudaDeviceType;
     }
     
     // Override
@@ -44,7 +54,19 @@ public:
         
         return tmp;
     }
-
+    
+    void *hostMalloc(size_t size)
+    {
+        char *tmp;
+        cudaError_t err =cudaMallocHost(&tmp, size);
+        if(err != cudaSuccess)
+        {
+            std::cout << cudaGetErrorString(err) << std::endl;
+        }
+        
+        return tmp;
+    }
+    
     // Override
     void free(void *ptr)
     {
@@ -58,14 +80,23 @@ public:
     // Override
     void submit(Task *task)
     {
-        
+        this->task  = task;
+        cudaSetDevice(this->deviceID);
+        localWorker = std::thread(runTask, task);
     }
 
     // Override
     void syncDevice()
     {
+        // Wait for thread termination
+        localWorker.join();
+        
+        // Wait for cuda device
         cudaSetDevice(this->deviceID);
         cudaDeviceSynchronize();
+        
+        // Clean up
+        task = nullptr;
     }
 };
 
